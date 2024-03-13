@@ -1,10 +1,11 @@
 package br.com.alura.alugames.principal
 
-import br.com.alura.alugames.model.Gamer
 import br.com.alura.alugames.model.Game
+import br.com.alura.alugames.model.Gamer
 import br.com.alura.alugames.services.ApiConsumer
-import java.util.Scanner
 import convertInAge
+import java.util.*
+
 
 fun main() {
     val leitura = Scanner(System.`in`)
@@ -19,7 +20,6 @@ fun main() {
 
         val buscaApi = ApiConsumer()
         val informacaoJogo = buscaApi.searchGame(busca)
-
 
         var meuJogo: Game? = null
 
