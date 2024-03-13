@@ -2,9 +2,9 @@ package br.com.alura.alugames.services
 
 import br.com.alura.alugames.model.DataGame
 import br.com.alura.alugames.model.DataGamerJson
-import br.com.alura.alugames.modelo.DataGameJson
-import br.com.alura.alugames.modelo.Game
-import br.com.alura.alugames.modelo.Gamer
+import br.com.alura.alugames.model.DataGameJson
+import br.com.alura.alugames.model.Game
+import br.com.alura.alugames.model.Gamer
 import br.com.alura.alugames.utils.createGamer
 import br.com.alura.alugames.utils.createGame
 import com.google.gson.Gson

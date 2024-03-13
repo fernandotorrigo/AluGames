@@ -1,5 +1,5 @@
-package br.com.alura.alugames.modelo
+package br.com.alura.alugames.model
 
 data class DataGameJson(
-    val titulo: String, val capa: String, val preco: Double, val descricao: String
+    val titulo: String, val capa: String, val price: Double, val description: String
 )

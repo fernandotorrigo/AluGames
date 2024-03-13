@@ -1,17 +1,17 @@
-package br.com.alura.alugames.modelo
+package br.com.alura.alugames.model
 
 data class Game(
     val titulo: String, val capa: String
 ) {
-    var descricao: String? = null
-    var preco = 0.0
+    var description: String? = null
+    var price = 0.0
 
-    constructor(titulo: String, capa: String, preco: Double, descricao: String) : this(titulo, capa) {
-        this.preco = preco
-        this.descricao = descricao
+    constructor(titulo: String, capa: String, price: Double, description: String) : this(titulo, capa) {
+        this.price = price
+        this.description = description
     }
 
     override fun toString(): String {
-        return "Meu Jogo: \n" + "Título: $titulo \n" + "Capa: $capa \n" + "Descricao: $descricao" + "Preço: $preco"
+        return "Meu Jogo: \n" + "Título: $titulo \n" + "Capa: $capa \n" + "Descricao: $description" + "Preço: $price"
     }
 }
