@@ -3,9 +3,17 @@ package br.com.alura.alugames.model
 data class Game(
     val titulo: String,
     val capa: String
-) {
+) : Recomendable {
     var description: String? = null
     var price = 0.0
+
+    private val listaNotas = mutableListOf<Int>()
+    override val media: Double
+        get() = listaNotas.average()
+
+    override fun recomend(nota: Int) {
+        listaNotas.add(nota)
+    }
 
     constructor(titulo: String, capa: String, price: Double, description: String) :
             this(titulo, capa) {
