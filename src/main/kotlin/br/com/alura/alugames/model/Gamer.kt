@@ -1,9 +1,8 @@
 package br.com.alura.alugames.model
-
 import java.util.*
 import kotlin.random.Random
 
-data class Gamer(var nome: String, var email: String) {
+data class Gamer(var nome: String, var email: String) : Recomendable {
     var dataNascimento: String? = null
     var usuario: String? = null
         set(value) {
@@ -14,7 +13,17 @@ data class Gamer(var nome: String, var email: String) {
         }
     var idInterno: String? = null
         private set
+    var plano: Plan = SeparatedPlan("BRONZE")
     val jogosBuscados = mutableListOf<Game?>()
+    val jogosAlugados = mutableListOf<Rent>()
+    private val listaNotas = mutableListOf<Int>()
+
+    override val media: Double
+        get() = listaNotas.average()
+
+    override fun recomend(nota: Int) {
+        listaNotas.add(nota)
+    }
 
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
             this(nome, email) {
@@ -31,7 +40,13 @@ data class Gamer(var nome: String, var email: String) {
     }
 
     override fun toString(): String {
-        return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
+        return "Gamer:\n" +
+                "Nome: $nome\n" +
+                "Email: $email\n" +
+                "Data Nascimento: $dataNascimento\n" +
+                "Usuario: $usuario\n" +
+                "IdInterno: $idInterno\n" +
+                "Reputação: $media"
     }
 
     fun criarIdInterno() {
@@ -48,7 +63,19 @@ data class Gamer(var nome: String, var email: String) {
         } else {
             throw IllegalArgumentException("Email inválido")
         }
+    }
 
+    fun alugaJogo(game: Game, periodo: PeriodTime): Rent {
+        val rent = Rent(this, game, periodo)
+        jogosAlugados.add(rent)
+
+        return rent
+    }
+
+    fun jogosDoMes(mes: Int): List<Game> {
+        return jogosAlugados
+            .filter { rent -> rent.periodTime.initDate.monthValue == mes }
+            .map { rent -> rent.game }
     }
 
     companion object {
