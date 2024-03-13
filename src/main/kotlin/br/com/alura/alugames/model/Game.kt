@@ -26,6 +26,7 @@ data class Game(
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $description \n" +
-                "Preço: $price"
+                "Preço: $price" +
+                "Reputação: $media"
     }
 }
